@@ -33,6 +33,16 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.house, function (sprite, oth
     )
     mySprite2.follow(spr_player)
 })
+function playMusic () {
+    if (!(gameStarted)) {
+        music.playMelody("G F G A - F E D ", 200)
+        music.playMelody("C5 B A G F E D C ", 200)
+    } else {
+        music.playMelody("A F E F D G E F ", 200)
+        music.playMelody("A F E F D G E F ", 200)
+    }
+    playMusic()
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (gameStarted) {
         if (!(deliveryGuyLeavesVan)) {
@@ -91,21 +101,25 @@ function ShowGameInfo () {
     spr_3 = textsprite.create("3", 0, 15)
     spr_3.changeScale(4, ScaleAnchor.Middle)
     spr_3.setPosition(76, 29)
+    music.playTone(440, music.beat(BeatFraction.Half))
     pause(1000)
     spr_3.destroy()
     spr_2 = textsprite.create("2", 0, 15)
     spr_2.changeScale(4, ScaleAnchor.Middle)
     spr_2.setPosition(76, 29)
+    music.playTone(440, music.beat(BeatFraction.Half))
     pause(1000)
     spr_2.destroy()
     spr_1 = textsprite.create("1", 0, 15)
     spr_1.changeScale(4, ScaleAnchor.Middle)
     spr_1.setPosition(79, 29)
+    music.playTone(440, music.beat(BeatFraction.Half))
     pause(1000)
     spr_1.destroy()
     spr_GO = textsprite.create("GO", 0, 15)
     spr_GO.changeScale(4, ScaleAnchor.Middle)
     spr_GO.setPosition(76, 29)
+    music.playTone(784, music.beat(BeatFraction.Whole))
     pause(1000)
     spr_GO.destroy()
     gameStarted = 1
@@ -176,6 +190,7 @@ let delivered = 0
 let showInfo = 0
 showInfo = 0
 constants()
+playMusic()
 game.onUpdate(function () {
 	
 })
